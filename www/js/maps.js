@@ -9,7 +9,7 @@ var onSuccess = function(position) {
 	
 	var http = new XMLHttpRequest();
 	var url = "";
-	var params = "latitude=" + latitude + "longitude=" + longitude;
+	var params = "latitude=" + latitude + "&longitude=" + longitude;
 	http.open("POST", url, true);
 
 	//Send the proper header information along with the request
@@ -17,7 +17,7 @@ var onSuccess = function(position) {
 
 	http.onreadystatechange = function() {//Call a function when the state changes.
 			if(http.readyState == 4 && http.status == 200) {
-					alert(http.responseText);
+					//alert(http.responseText);
 			}
 	}
 	http.send(params);
@@ -26,8 +26,7 @@ var onSuccess = function(position) {
 // onError Callback receives a PositionError object
 //
 function onError(error) {
-	alert('code: '    + error.code    + '\n' +
-				'message: ' + error.message + '\n');
+	//alert(error.message + '\n');
 }
 
 navigator.geolocation.getCurrentPosition(onSuccess, onError);
