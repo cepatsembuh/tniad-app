@@ -15,13 +15,11 @@ var panic = faskes.child('darurat')
 var pasien = faskes.child('pasien');
 
 function sendData(latitude, longtitude) {
-	var latitude = latidude;
-	var longtitude = longtitude;
-
 	panic.push().set({
 		latitude: latitude,
 		longtitude: longtitude
 	})
+	
 	alert("Laporan anda sudah terkirim");
 }
 
