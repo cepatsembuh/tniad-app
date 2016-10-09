@@ -1,66 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="bower_components/milligram/dist/milligram.min.css">
-	<link rel="stylesheet" href="css/style.css">
-	<script src="js/jquery.min.js"></script>
-	<script src="js/maps.js"></script>
-<!--
-	<script>
-		function daftarRS() {
-		  'use strict';
-		  var nama = $('#name').val();
-		  var nik = $('#nik').val();
-		  var no = $('#no').val();
-
-		  if (nama == '') {
-		    alert('Anda belum memasukan nama anda');
-		  } else if (nik.length != 16) {
-		    alert('NIK anda tidak valid');
-		  } else if (no.length != 20) {
-		    alert('Nomor BPJS anda tidak valid');
-		  } else {
-		    window.location.href = 'faskes/option/index.html';
-		  }
-		}
-	</script>
--->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="bower_components/milligram/dist/milligram.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/maps.js"></script>
+    <style>
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      #map {
+                margin-top: 5%;
+                height: 50%;
+      }
+    </style>
 </head>
+<script>
+	document.addEventListener("deviceready", onDeviceReady, false);
+	function onDeviceReady() {	
+		console.log('Device is ready')
+	};
+
+	function jantung() {
+        console.log('Serangan Jantung')	        
+	    $.ajax({url: "http://192.168.0.104/cekatan/api.php?lat=-6.598033&long=106.797336&pname=Lorem&stype=jantung&phone=08123456789", success:         function(result){
+	    }});
+	}
+
+	function bencana() {
+		console.log('Bencana Alam')   
+	    $.ajax({url: "http://192.168.0.104/cekatan/api.php?lat=-6.536368&long=106.796907&pname=Lorem&stype=bencana&phone=08123456789", success:         function(result){	     
+	    }});
+	}
+
+	function luka() {
+	    console.log('Kecelakaan/Luka')	        
+	    $.ajax({url: "http://192.168.0.104/cekatan/api.php?lat=-6.598033&long=106.797336&pname=Lorem&stype=luka&phone=08123456789", success:        function(result){
+	    }});
+	}
+</script>
 <body>
-	<div class="container">
-		<center>
-			<img src="img/icon.png"><br>
-			<span id="ayat">"Hati yang gembira adalah obat".</span><br>			
-		</center>
-		<div class="form">
-			<hr>
-			<form action="http://192.168.0.104/cekatan/api.php" method="get">
-				<fieldset>
-					<h3 class="shawn">Panic Button</h3>
-
-					<label for="stype">Stype</label>
-					<select name="stype" id="stype">
-						<option disabled selected>Tipe Bantuan</option>
-						<option value="jantung">Jantung</option>
-						<option value="luka">Luka</option>
-						<option value="bencana">Bencana</option>
-					</select>
-
-					<br><br>
-					<center><button type="submit" class="button-primary button-outline button same-width">Lapor</button></center>
-					<hr>				
-					
-				</fieldset>
-			</form>	
-		</div>
-	</div>
+        <center>
+            <img src="img/icon.png"><br>
+            <h2>Jenis Bantuan Darurat</h2>
+        </center>
+        <center>
+         <button class="button button-outline same-width" onclick="jantung()">Serangan Jantung</button>
+         <button class="button button-outline same-width" onclick="luka()">Kecelakaan/Luka</button>
+         <button class="button button-outline same-width" onclick="bencana()">Bencana Alam</button>
+        </center>   
 </body>
 </html>
-
-
-
-
-
-

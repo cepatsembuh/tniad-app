@@ -1,32 +1,20 @@
 document.addEventListener("deviceready", onDeviceReady, false);
-function onDeviceReady() {
-	console.log("navigator.geolocation works well");
-}
+function onDeviceReady() {	
+	    $("#jantungbtn").click(function(){
+	    $.ajax({url: "http://192.168.0.104/cekatan/api.php?lat=-6.598033&long=106.797336&pname=Lorem&stype=jantung&phone=08123456789", success:         function(result){
+	        console.log('Serangan Jantung')	        
+	    }});
+	    });
 
-var onSuccess = function(position) {
-  var latitude = position.coords.latitude,
-			longitude = position.coords.longitude;
-	
-	var http = new XMLHttpRequest();
-	var url = "";
-	var params = "latitude=" + latitude + "&longitude=" + longitude;
-	http.open("POST", url, true);
+	    $("#lukabtn").click(function(){
+	    $.ajax({url: "http://192.168.0.104/cekatan/api.php?lat=-6.598033&long=106.797336&pname=Lorem&stype=luka&phone=08123456789", success:        function(result){
+	        console.log('Kecelakaan/Luka')	        
+	    }});
+	    });
 
-	//Send the proper header information along with the request
-	http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-
-	http.onreadystatechange = function() {//Call a function when the state changes.
-			if(http.readyState == 4 && http.status == 200) {
-					//alert(http.responseText);
-			}
-	}
-	http.send(params);
+	    $("#bencanabtn").click(function(){
+	    $.ajax({url: "http://192.168.0.104/cekatan/api.php?lat=-6.536368&long=106.796907&pname=Lorem&stype=bencana&phone=08123456789", success:         function(result){	     
+	    		console.log('Bencana Alam')   
+	    }});
+	    });
 };
-
-// onError Callback receives a PositionError object
-//
-function onError(error) {
-	//alert(error.message + '\n');
-}
-
-navigator.geolocation.getCurrentPosition(onSuccess, onError);
